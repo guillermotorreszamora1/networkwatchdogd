@@ -1,0 +1,10 @@
+[Unit]
+Description=Network Watchdog Daemon
+
+[Service]
+User=root
+ExecStart=/bin/networkwatchdogd
+ExecReload=/bin/kill -9 $MAINPID && /bin/networkwatchdogd
+
+[Install]
+WantedBy=multi-user.target

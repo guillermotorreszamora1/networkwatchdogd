@@ -1,0 +1,11 @@
+networkwatchdogd (5.0.1) unstable; urgency=medium
+
+  * Downgrade de dependencias para compatibilizar con Ubuntu 16.04
+
+ -- Guillermo Torres <torreszamoraguillermo@gmail.com>  Fri, 20 Sep 2019 09:00:21 +0200
+
+networkwatchdogd (5.0) unstable; urgency=medium
+
+  * Initial release
+
+ -- Guillermo Torres <torreszamoraguillermo@gmail.com>  Sun, 28 Jul 2019 14:39:05 +0200

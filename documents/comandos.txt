@@ -1,0 +1,10 @@
+-generar esqueleto: comprimir el paquete en
+nombre-version.orig.tar.xz
+y dh_make -f nombre-version.orig.tar.xz
+importante debian/rules y Makefile
+-construir el paquete
+dpkg-buildpackage  -us -uc -tc
+-comprobar calidad del paquete
+lintian nombre_del_paquete_compilado.deb
+-editar changelog
+dch

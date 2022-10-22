@@ -1,0 +1,16 @@
+Source: networkwatchdogd
+Section: net
+Priority: optional
+Maintainer: Guillermo Torres <torreszamoraguillermo@gmail.com>
+Build-Depends: debhelper (>= 9.0)
+Standards-Version: 3.9.8
+
+Package: networkwatchdogd
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, kmod,net-tools,coreutils (>= 8.25),grep( >=2.25),iputils-arping,network-manager,lsb-base
+Description: Reload network connection in case of failure
+ This program runn
+ ing as daemon check the network connection using arping to probe 192.168.1.1.
+ And reload the NetworkManager and the corresponding driver.At this time it
+ only recognizes a pair of drivers(rtl8822be and rt2800pci) and a pair of
+ interfaces ( wlan0 and wlo1).
