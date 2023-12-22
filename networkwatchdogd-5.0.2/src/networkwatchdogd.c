@@ -3,8 +3,8 @@
 #include<sys/types.h>
 #include<unistd.h>
 #include<string.h>
-#define DRIVERS_NUMBER 2
-#define INTERFACE_NUMBER 2
+#define DRIVERS_NUMBER 3
+#define INTERFACE_NUMBER 3
 char drivers_name[DRIVERS_NUMBER][16] = {"rtl8822be","rt2800pci","rtw89_8852be"};
 char interfaces_name[INTERFACE_NUMBER][8] = {"wlan0","wlo1","wlp2s0"};
 int exec_command_with_arg_and_return_int(char* command,char* arg){
@@ -24,6 +24,7 @@ char* detect_driver(){
   for(i=0;i<DRIVERS_NUMBER;i++){
       status = exec_command_with_arg_and_return_int("lsmod | grep %s | wc -l",drivers_name[i]);
       if(status>0){
+	printf("Driver detected:%s\n",drivers_name[i]);
         return drivers_name[i];
       }
   }
@@ -34,6 +35,7 @@ char* detect_interface(){
   for(i=0;i<INTERFACE_NUMBER;i++){
     status = exec_command_with_arg_and_return_int("ifconfig | grep %s | wc -l",interfaces_name[i]);
     if(status>0){
+      printf("Interface detected:%s\n",interfaces_name[i]);
       return interfaces_name[i];
     }
   }
@@ -51,19 +53,23 @@ int worker(char* driver_name,char* interface_name){
   sprintf(driver_start_command,"modprobe %s",driver_name);
   while(1){
     sleep(10);
-    if(test(interface_name)!=4){
+    printf("Performing test");
+    int lines = test(interface_name);
+    printf("Lines obtained:%d\n",lines);
+    if(lines!=4){
       errores++;
     }else{
       umbral=2;
       errores=0;
     }
-    //printf("%d\n",errores);
+    printf("%d\n",errores);
     if(errores==umbral){
       errores=0;
       umbral++;
       if(umbral==5){
         umbral=2;
       }
+      printf("Restart triggered\n");
       system("systemctl stop NetworkManager");
       system(driver_stop_command);//rtl8822be
       system(driver_start_command);
