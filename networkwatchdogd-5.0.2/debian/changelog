@@ -1,3 +1,9 @@
+networkwatchdogd (5.0.2) unstable; urgency=medium
+
+  * Compatibility with new system
+
+ -- Guillermo Torres Zamora <guillermotorres1998@hotmail.es>  Thu, 19 Oct 2023 19:56:09 +0200
+
 networkwatchdogd (5.0.1) unstable; urgency=medium
 
   * Downgrade de dependencias para compatibilizar con Ubuntu 16.04

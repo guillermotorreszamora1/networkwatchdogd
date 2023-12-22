@@ -5,8 +5,8 @@
 #include<string.h>
 #define DRIVERS_NUMBER 2
 #define INTERFACE_NUMBER 2
-char drivers_name[DRIVERS_NUMBER][16] = {"rtl8822be","rt2800pci"};
-char interfaces_name[INTERFACE_NUMBER][8] = {"wlan0","wlo1"};
+char drivers_name[DRIVERS_NUMBER][16] = {"rtl8822be","rt2800pci","rtw89_8852be"};
+char interfaces_name[INTERFACE_NUMBER][8] = {"wlan0","wlo1","wlp2s0"};
 int exec_command_with_arg_and_return_int(char* command,char* arg){
   FILE* f;
   int i,status;
